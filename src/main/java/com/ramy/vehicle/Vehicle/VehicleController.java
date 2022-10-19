@@ -1,5 +1,6 @@
 package com.ramy.vehicle.Vehicle;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class VehicleController {
     @GetMapping("/vehicles")
     @CrossOrigin(origins = "*")
     List<Vehicle> all() {
-        return vehicleRepository.findAll();
+        return vehicleRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     @PostMapping("/vehicle")
